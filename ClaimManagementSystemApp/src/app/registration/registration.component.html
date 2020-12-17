@@ -1,0 +1,94 @@
+<div style="border:1px solid blue;">
+    <h2 align="center">Welcome to Claims Management System</h2>
+    <p style="margin-right: 95%;background-color:blue">Welcome User!!</p><button style="margin-left: 95%;background-color:red">Logout</button>
+  </div>
+  <div align="center" style="border:1px solid blue;">
+    <h4 style="color:blue">Registration Page</h4>
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <table>
+            <tr>
+                <td>FirstName</td>
+                <td><input type="text" formControlName="firstName"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.firstName.errors?.required" style="color:red">First Name is required</span>
+                  </td>
+             </tr>
+            <tr>
+              <td>LastName</td>
+              <td><input type="text" formControlName="lastName"></td>
+              <td> 
+                <span *ngIf="submitted && formdata.controls.lastName.errors?.required" style="color:red">Last Nameis required</span>
+              </td>
+           </tr>
+           <tr>
+            <td>age</td>
+            <td><input type="text" formControlName="age"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.age.errors?.required" style="color:red">age is required</span>
+              </td>
+         </tr>
+         <tr>
+            <td>Gender</td>
+            <td><input type="radio" formControlName="gender" >Male
+               <input type="radio" >Female
+            </td>
+            <td> 
+               <span *ngIf="submitted && formdata.controls.gender.errors?.required" style="color:red">gender is required</span>
+             </td>
+        </tr>
+        <tr>
+            <td>ContactNumber</td>
+            <td><input type="text" formControlName="contactNumber"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.contactNumber.errors?.required" style="color:red">Zip Code is required</span>
+              </td>
+         </tr>
+       
+       <tr>
+        <td>DateOfBirth</td>
+        <td><input type="text" formControlName="dateofbirth"></td>
+        <td> 
+            <span *ngIf="submitted && formdata.controls.dateofbirth.errors?.required" style="color:red">Zip Code is required</span>
+          </td>
+     </tr>
+         <tr>
+            <td>UserId</td>
+            <td><input type="text" formControlName="userId"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Zip Code is required</span>
+              </td>
+         </tr>
+        
+        
+         <tr>
+            <td>Password</td>
+            <td><input type="password" formControlName="password"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.password.errors?.required" style="color:red">Password is required</span>
+              </td>
+         </tr>
+         <tr>
+            <td>ConfirmPassword</td>
+            <td><input type="password" formControlName="confirmPassword"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.confirmPassword.errors?.required" style="color:red">Password is required</span>
+              </td>
+         </tr>
+        
+       
+        <tr><td>Role</td>
+       <td>
+       <select id="Role Id">
+           <option value="">--select--</option>
+           <option>User</option>
+           <option>Admin</option>
+           </select>
+       </td>
+      
+         <tr align="center">
+             <td colspan="3"><input type="submit"value="register"></td>
+         </tr>
+        </table>
+    </form>    
+</div>
+

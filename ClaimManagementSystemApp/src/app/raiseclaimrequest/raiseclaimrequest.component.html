@@ -1,0 +1,48 @@
+<a href="/home">Home</a>
+<div align="center">
+    <h2>Raise Claim Request</h2>
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <table>
+            <tr>
+                <td>ClaimDate</td>
+                <td><input type="date" formControlName="claimDate"></td>
+            </tr>>
+            <tr>
+                <td>BillAmount</td>
+                <td><input type="text" formControlName="billAmount"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.weight.errors?.required" style="color:red">billamount is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>ClaimType</td>
+                <td><input type="text" formControlName="claimType"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.height.errors?.required" style="color:red">ClaimType is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>InsurancePlan</td>
+                <td><input type="text" formControlName="insurancePlan"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.height.errors?.required" style="color:red">InsuranceType is required</span>
+                  </td>
+            </tr>
+           
+            <tr align="center">
+                <td colspan="3"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div>
+    <table>
+        <tr *ngFor ="let item of persondata;let i=index">
+            <td>{{item.claimDate}}</td>
+            <td>{{item.billAmount}}</td>
+            <td>{{item.claimType}}</td>
+            <td>{{item.insurancePlan}}</td>
+        </tr>
+    </table>
+</div>
+<router-outlet></router-outlet>

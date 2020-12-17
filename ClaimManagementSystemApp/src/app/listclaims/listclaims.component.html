@@ -1,0 +1,64 @@
+<a href="/home">Home</a>
+<div align="center">
+    <h2>Lists Claim</h2>
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <table>
+            <tr>
+                <td>ClaimId</td>
+                <td><input type="text" formControlName="claimId"></td>
+            </tr>>
+            <tr>
+                <td>ClainInfo</td>
+                <td><input type="text" formControlName="claimInfo"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.claimInfo.errors?.required" style="color:red">billamount is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>RequestAmount/td>
+                <td><input type="text" formControlName="requestAmount"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.requestAmount.errors?.required" style="color:red">ClaimType is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>ReceivedAmount</td>
+                <td><input type="text" formControlName="receivedAmount"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.receivedAmount.errors?.required" style="color:red">InsuranceType is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td><input type="text" formControlName="status"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.status.errors?.required" style="color:red">InsuranceType is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>UserId</td>
+                <td><input type="text" formControlName="userId"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">InsuranceType is required</span>
+                  </td>
+            </tr>
+           
+            <tr align="center">
+                <td colspan="3"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div>
+    <table>
+        <tr *ngFor ="let item of persondata;let i=index">
+            <td>{{item.claimId}}</td>
+            <td>{{item.claimInfo}}</td>
+            <td>{{item.requestAmount}}</td>
+            <td>{{item.receivedAmount}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.userId}}</td>
+        </tr>
+    </table>
+</div>
+<router-outlet></router-outlet>
