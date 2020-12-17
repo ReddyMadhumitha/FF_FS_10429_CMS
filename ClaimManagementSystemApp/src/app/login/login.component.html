@@ -1,16 +1,13 @@
-<div style="border:1px solid blue;">
-   <h2 align="center">Welcome to Claims Management System</h2>
-   <p style="margin-right: 95%;background-color:blue">Welcome Madhu!!</p><button style="margin-left: 95%;background-color:red">Logout</button>
- </div>
  <div align="center" style="border:1px solid blue;">
-   <h4 style="color:blue">Login Page</h4>
+ <h4 style="color:blue">Login Page</h4>
+ <h3>{{message}}</h3>
    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
       <table>
           <tr>
               <td>UserId</td>
-              <td><input type="text" formControlName="userid"></td>
+              <td><input type="text" formControlName="userId"></td>
                  <td>
-                      <span *ngIf="submitted && formdata.controls.userid.errors?.required" style="color:red">User id is required</span>
+                      <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">User id is required</span>
                     </td> 
           </tr>
           <tr>
@@ -29,4 +26,3 @@
       </table>
   </form>
 </div>
-<router-outlet></router-outlet>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Raiseclaimreq } from '../raiseclaimreq';
+import { Claim } from '../claim';
 
 @Component({
   selector: 'app-raiseclaimrequest',
@@ -16,28 +17,31 @@ export class RaiseclaimrequestComponent implements OnInit {
 
 constructor(private router:Router,private service:UserService) { }
 formdata;
-rcr:Raiseclaimreq =new Raiseclaimreq();
+
   ngOnInit(): void {
     this.formdata= new FormGroup({
+      claimId:new FormControl("",Validators.compose([Validators.required])),
       claimDate:new FormControl("",Validators.compose([Validators.required])),
       billAmount:new FormControl("",Validators.compose([Validators.required])),
       claimType:new FormControl("",Validators.compose([Validators.required])),
-      insuranceType:new FormControl("",Validators.compose([Validators.required]))
+      insurancePlan:new FormControl("",Validators.compose([Validators.required]))
     })
   }
   //bmi:bmi;
-  public persondata=[]
+  
   submitted:boolean;
   onClickSubmit(data) {
+    var claim:any=new Claim();
     this.submitted=true;
-    if(data.claimDate>0&&data.billAmount>0&&data.claimType>0&&data.insuranceType>0) {
-    this.rcr.claimDate=data.claimData;
-    this.rcr.billAmount=data.billAmount;
-    this.rcr.claimType=data.claimType;
-    this.rcr.insurancePlan=data.insurancePlan;
-    this.service.raiseclaimrequest(this.rcr).subscribe((response) => {
+    if(data.claimDate.length>0&&data.billAmount>0&&data.claimType.length>0&&data.insurancePlan.length>0) {
+    claim.claimId=data.claimId;
+    claim.claimDate=data.claimData;
+    claim.billAmount=data.billAmount;
+    claim.claimType=data.claimType;
+    claim.insurancePlan=data.insurancePlan;
+    this.service.raiseclaimrequest(claim).subscribe((response) => {
      console.log(response);
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/userhome");
     }, (error) => {
      console.log(error);
      this.msg = error.message;

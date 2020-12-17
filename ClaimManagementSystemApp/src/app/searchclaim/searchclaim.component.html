@@ -1,1 +1,25 @@
-<p>searchclaim works!</p>
+<h3>search Claim And View Status</h3>
+<br />
+<form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <table border="1">
+        <tr>
+            <td>Search By Claim</td><td><input type="number" name="claim_Id" placeholder="Enter Claim Id" formControlName="claim_Id"></td>
+            <td colspan="2"><button (click)="onClickSubmit(formdata.value)" style="background-color:rgb(113, 107, 197);">Search</button></td>
+        </tr>
+    </table>
+</form>
+<br />
+<button routerLink="/member" style="background-color: purple;">Back</button>
+<br />
+<div *ngIf="flag">
+    <table border="1" bgcolor="lightgreen">
+        <tr>
+            <th>Claim Id</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>{{claim[0]}}</td>
+            <td>{{claim[8]}}</td>
+        </tr>
+    </table>
+</div>

@@ -18,6 +18,10 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
 import { ListclaimsComponent } from './listclaims/listclaims.component';
 import { BulkstatusupdateComponent } from './bulkstatusupdate/bulkstatusupdate.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MemberstobeactivatedComponent } from './memberstobeactivated/memberstobeactivated.component';
+import { CheckmembereligibilityComponent } from './checkmembereligibility/checkmembereligibility.component';
+import { AdminComponent } from './admin/admin.component';
+import { MemberComponent } from './member/member.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +37,11 @@ import { HttpClientModule } from '@angular/common/http';
     ClaimstobeprocessedComponent,
     UpdateprofileComponent,
     ListclaimsComponent,
-    BulkstatusupdateComponent
+    BulkstatusupdateComponent,
+    MemberstobeactivatedComponent,
+    CheckmembereligibilityComponent,
+    AdminComponent,
+    MemberComponent
   ],
   imports: [
     BrowserModule,

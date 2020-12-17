@@ -4,29 +4,59 @@
     <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
         <table>
             <tr>
+                <td>ClaimId</td>
+                <td><input type="text" formControlName="claimId"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.claimId.errors?.required" style="color:red">Claim Id  is required</span>
+                  </td>
+            </tr>
+            <tr>
                 <td>ClaimDate</td>
-                <td><input type="date" formControlName="claimDate"></td>
-            </tr>>
+                <td><input type="text" formControlName="claimDate"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.claimDate.errors?.required" style="color:red">Claim Date  is required</span>
+                  </td>
+            </tr>
             <tr>
                 <td>BillAmount</td>
                 <td><input type="text" formControlName="billAmount"></td>
                 <td> 
-                    <span *ngIf="submitted && formdata.controls.weight.errors?.required" style="color:red">billamount is required</span>
+                    <span *ngIf="submitted && formdata.controls.billAmount.errors?.required" style="color:red">Billamount is required</span>
                   </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>ClaimType</td>
                 <td><input type="text" formControlName="claimType"></td>
                 <td> 
-                    <span *ngIf="submitted && formdata.controls.height.errors?.required" style="color:red">ClaimType is required</span>
+                    <span *ngIf="submitted && formdata.controls.claimType.errors?.required" style="color:red">ClaimType is required</span>
                   </td>
-            </tr>
-            <tr>
-                <td>InsurancePlan</td>
-                <td><input type="text" formControlName="insurancePlan"></td>
-                <td> 
-                    <span *ngIf="submitted && formdata.controls.height.errors?.required" style="color:red">InsuranceType is required</span>
-                  </td>
+            </tr> -->
+            
+         <tr>
+            <td>ClaimType</td>
+            <td><form:select formControlName="claimType"
+                style="width: 127px">
+                <option value=1>Claims of Fact</option>
+                <option value=2>Claims of Value</option>
+                <option value=2>Claims of Policy</option>
+             
+              </form:select></td>
+              <td> 
+                <span *ngIf="submitted && formdata.controls.claimType.errors?.required" style="color:red">RoleId is required</span>
+              </td>
+          </tr>
+          <tr>
+            <td>InsurancePlan</td>
+            <td><form:select formControlName="insurancePlan"
+                style="width: 127px">
+                <option value=1>Term Plan</option>
+                <option value=2>Whole Life Insurance Plan</option>
+                <option value=2>Childs Plan</option>
+             
+              </form:select></td>
+              <td> 
+                <span *ngIf="submitted && formdata.controls.insurancePlan.errors?.required" style="color:red">RoleId is required</span>
+              </td>
             </tr>
            
             <tr align="center">
@@ -35,7 +65,7 @@
         </table>
     </form>
 </div>
-<div>
+<!-- <div>
     <table>
         <tr *ngFor ="let item of persondata;let i=index">
             <td>{{item.claimDate}}</td>
@@ -45,4 +75,4 @@
         </tr>
     </table>
 </div>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->

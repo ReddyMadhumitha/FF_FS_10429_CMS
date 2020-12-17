@@ -3,6 +3,9 @@
  */
 package com.hcl.training.model;
 
+
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,30 +32,27 @@ import lombok.Setter;
 @AllArgsConstructor
 
 public class User {
-	@Column
-    private String firstName;
-    
-    @Column
-    private String lastName;
-  
-    @Column
-    private Integer age;
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private int Id;
 
-    @Column
+    private String firstName;
+   
+    private String lastName;
+ 
+    private Integer age; 
+ 
     private String gender;
-   // @NotEmpty(message="Please enter your gender")
-	@Pattern(regexp="(^$|[0-9]{10})",message="Enter 10 digit number")
-    private String contactNumber;
-	//@NotEmpty(message="Please enter your contactNumber")
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+   
+    private long contactNumber;
+	
+  
     private int userId;
-    @Column
-    private int dateofbirth;
-	@Column
+   
+    private String dateofbirth;
+
     private String password;
-   // @NotEmpty(message="Please enter your password")
-    @Column
+  
     private String confirmPassword;
     //@NotEmpty(message="Please provide  your role id")
 	private Integer roleId;

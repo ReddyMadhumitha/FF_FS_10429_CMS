@@ -1,40 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { Router } from '@angular/router';//component related routing.
-import {UserService} from '../user.service'
+import {​​​​​​​​ Component, OnInit }​​​​​​​​ from'@angular/core';
+import {​​​​​​​​ Router }​​​​​​​​ from'@angular/router';
+import {​​​​​​​​ FormGroup, FormControl, ReactiveFormsModule }​​​​​​​​ from'@angular/forms';
 
-
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
-export class LoginComponent implements OnInit {
-
-  constructor(private router:Router,private service:UserService) { }
+import {​​​​​​​​ HttpClient }​​​​​​​​ from'@angular/common/http';
+import { UserService } from '../user.service';
+ 
+@Component({​​​​​​​​
+selector:'app-login',
+templateUrl:'./login.component.html',
+styleUrls: ['./login.component.css']
+}​​​​​​​​)
+export class LoginComponent implements OnInit {​​​​​​​​
+ 
 formdata;
-  ngOnInit(): void {
-    this.formdata= new FormGroup({
-      userid:new FormControl("",Validators.compose([Validators.required])),
-      password:new FormControl("",Validators.compose([Validators.required]))
-    })
-  }
-  submitted:boolean;
-  onClickSubmit(data) {
-    this.submitted=true;
-    if(data.userid=="1"&&data.password=="123456") {
-      // var login:any=new login();
-      // login.userId=data.userid;
-      // login.password=data.password;
-      // this.service.login(login).subscribe((response) => {
-      //   console.log(response);
-      //   this.router.navigateByUrl("/home");
-      // }, (error) => {
-      //   console.log(error);
-      //   //this.msg = error.message;
-      // });
-this.router.navigateByUrl("/home");
-  }
-  }
+public users=[];
+constructor(private router: Router,private myservice:UserService,private http:HttpClient) {​​​​​​​​ }​​​​​​​​
+myClickFunction(event) {​​​​​​​​
+alert("Deatils submited");
+console.log(event);
+  }​​​​​​​​
+ngOnInit(): void {​​​​​​​​
+this.formdata = new FormGroup({​​​​​​​​
+user_Id:new FormControl(""),
+password:new FormControl(""),
+confirmpassword:new FormControl("")
+    }​​​​​​​​);
+  }​​​​​​​​
+msg:string;
+onClickSubmit(data) {​​​​​​​​
+this.http.get("http://localhost:8080/user/LoginData/"+data.user_Id).subscribe((dat)=>{​​​​​​​​
+this.users=Array.from(Object.keys(dat),k=>dat[k]);
+console.log(this.users);
+if(this.users[6]==1) {​​​​​​​​
+if(this.users[8]=="approved") {​​​​​​​​
+this.msg="Login Success";
+this.router.navigate(["member",{​​​​​​​​ p1:data.user_Id }​​​​​​​​]);
+        }​​​​​​​​
+else
+this.msg="Login Failed Due TO Unauthorization From Admin";
+      }​​​​​​​​
+else if(this.users[6]==2) {​​​​​​​​
+this.msg="Login Success";
+this.router.navigate(["admin",{​​​​​​​​ p1:data.user_Id }​​​​​​​​]);
+      }​​​​​​​​
+else
+this.msg="Login Failed";
+    }​​​​​​​​) 
+  }​​​​​​​​
+}​​​​​​​​
 
-}

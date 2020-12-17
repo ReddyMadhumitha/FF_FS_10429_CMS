@@ -1,0 +1,24 @@
+<p>welcome works!</p>
+<h3>{{msg}}</h3>
+<h1>Create Employee</h1>
+<form [formGroup] = "formData" (ngSubmit) = "onClickSubmit(formData.value)" >
+<table>
+  <tr>
+      <td>Name</td>
+      <td><input type="text" name="name" formControlName="name"></td>
+  </tr>
+  <tr>
+      <td>Salary</td>
+      <td><input type="int" name="salary" formControlName="salary"></td>
+  </tr>
+  <tr>
+    <td>Age</td>
+    <td><input type="int" name="age" formControlName="age"></td>
+  </tr>
+  <tr>
+   <td> <input type="submit" value="Create"></td>
+  </tr>
+
+</table>
+</form>
+<h4>{{message}}</h4>

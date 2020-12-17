@@ -1,1 +1,61 @@
-<p>claimstobeprocessed works!</p>
+<a href="/home">Home</a>
+<div align="center">
+    <h2>Lists Claim</h2>
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <table>
+            <tr>
+                <td>ClaimId</td>
+                <td><input type="text" formControlName="claimId"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.claimId.errors?.required" style="color:red">billamount is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>ClainInfo</td>
+                <td><input type="text" formControlName="claimInfo"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.claimInfo.errors?.required" style="color:red">billamount is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>RequestAmount/td>
+                <td><input type="text" formControlName="requestAmount"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.requestAmount.errors?.required" style="color:red">ClaimType is required</span>
+                  </td>
+            </tr>
+            <tr>
+                <td>ReceivedAmount</td>
+                <td><input type="text" formControlName="receivedAmount"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.receivedAmount.errors?.required" style="color:red">InsuranceType is required</span>
+                  </td>
+            </tr>
+         
+            <tr>
+                <td>Status</td>
+                <td><form:select formControlName="status"
+                    style="width: 127px">
+                    <option value=1>Pending</option>
+                    <option value=2>Accepted</option>
+                    <option value=2>Denied</option>
+                 
+                  </form:select></td>
+                  <td> 
+                    <span *ngIf="submitted && formdata.controls.status.errors?.required" style="color:red">RoleId is required</span>
+                  </td>
+              </tr>
+            <tr>
+                <td>UserId</td>
+                <td><input type="text" formControlName="userId"></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">InsuranceType is required</span>
+                  </td>
+            </tr>
+           
+            <tr align="center">
+                <td colspan="3"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</div>

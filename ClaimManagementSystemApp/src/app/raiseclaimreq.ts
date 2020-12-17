@@ -1,5 +1,6 @@
 export class Raiseclaimreq {
-    claimDate:Number
+  claimId:Number
+    claimDate:String
     
     billAmount:Number
    
