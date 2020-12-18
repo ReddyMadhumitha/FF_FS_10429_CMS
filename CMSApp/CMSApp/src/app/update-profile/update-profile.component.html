@@ -1,0 +1,35 @@
+<h3>Update Profile</h3>
+<br />
+<form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <table border="1">
+        <tr>
+            <td>First Name<td><input type="text" name="first_Name" placeholder="Enter First name" formControlName="first_Name"></td>
+        </tr>
+        <tr>
+            <td>Last Name</td><td><input type="text" name="last_Name"placeholder="Enter last name" formControlName="last_Name"></td>
+        </tr>
+        <tr>
+            <td>Age</td><td><input type="number" name="age" placeholder="Enter Age" formControlName="age"></td>
+        </tr>
+        <tr>
+            <td>Gender<td><input type="text" name="gender" placeholder="Enter Gender" formControlName="gender"></td>
+        </tr>
+        <tr>
+            <td>Contact Number<td><input type="text" name="contact_Number" placeholder="Enter contact number" formControlName="contact_Number"></td>
+        </tr>
+        <tr>
+            <td>Date Of Birth</td><td><input type="text" name="date_Of_Birth"placeholder="Enter date" formControlName="date_Of_Birth"></td>
+        </tr>
+        <tr>
+            <td>User id</td><td><input type="text" placeholder="Enter user id" formControlName="user_Id" ngModel={{p1}}></td>
+        </tr>
+       
+        <td><button (click)="myClickFunction($event)" style="background-color:peru;">Register</button></td>
+        <td><button style="background-color:gray;">Reset</button></td>   
+    </table>
+    <br />
+</form>
+<br />
+<button routerLink="/admin" style="background-color: purple;">Back</button>
+<br/>
+<h4>{{msg}}</h4>

@@ -1,0 +1,189 @@
+<h3>Admin Page</h3>
+<h4>{{mem}}</h4>
+<br />
+<button (click)="getData()" style="background-color:lightskyblue;">Members to be activated</button>
+<br />
+<br />
+<button (click)="updateProf()" style="background-color:lightgreen;">Update Profile</button>
+<br />
+<br />
+<button (click)="getClaims()" style="background-color:lightsalmon;">Claims To Be Processed</button>
+<br />
+<br />
+<button (click)="listClaims()" style="background-color:lightskyblue;">Payment Status</button>
+<br />
+<br />
+<button (click)="listUpdate()" style="background-color: lightgreen;">bulk Update</button>
+<br />
+<br />
+<button routerLink="/eligibility" style="background-color:lightsalmon;">Check Member Eligibility</button>
+<br />
+<br />
+<button routerLink="/" style="background-color: red;">Logout</button>
+<br />
+<div *ngIf="flag">
+<h3>Members To Be Activated</h3>
+<table  border="1" bgcolor="orange">
+    <tr>
+        <th>Members</th>
+    </tr>
+    <tr *ngFor = "let item of users; let i=index">
+        <td><button (click)="memberAcv(item.user_Id)"style="background-color:green;">{{item.user_Id}}</button></td>
+    </tr>
+</table>
+<br />
+<br />
+<button routerLink="/" style="background-color: red;">Logout</button>
+</div>
+<div *ngIf="flag1">
+<h3>Members Details</h3>
+<table  border="1" bgcolor="orange">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Contact Number</th>
+        <th>Date Of Birth</th>
+        <th>Status</th>
+        <th>Member Id</th>
+        <th>Password</th>
+    </tr>
+    <tr >
+        <td>{{user[1]}}</td>
+        <td>{{user[2]}}</td>
+        <td>{{user[3]}}</td>
+        <td>{{user[4]}}</td>
+        <td>{{user[5]}}</td>
+        <td>{{user[7]}}</td>
+        <td>{{user[8]}}</td>
+        <td>{{user[9]}}</td>
+        <td>{{user[10]}}</td>
+    </tr>
+</table>
+<br />
+<button (click)="updateSts(user[9])" style="background-color:lightyellow;">Update</button>
+<br />
+<br />
+<button routerLink="/" style="background-color: red;">Logout</button>
+</div>
+<br />
+<div *ngIf="flag2">
+    <h3>Claims To Be Proccessed</h3>
+    <table  border="1" bgcolor="orange">
+        <tr>
+            <th>Claim Id</th>
+        </tr>
+        <tr *ngFor = "let item of claims; let i=index">
+            <td><button (click)="claimAct(item.claim_Id)"style="background-color:green;">{{item.claim_Id}}</button></td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <button routerLink="/" style="background-color: red;">Logout</button> 
+</div>
+<br />
+<div *ngIf="flag3">
+    <h3>Claim Information</h3>
+    <table  border="1">
+        <tr>
+            <th>Claim Id</th>
+            <th>Claim Info</th>
+            <th>Claim Type</th>
+            <th>Claim Bill Amount</th>
+            <th>Claim Date</th>
+            <th>Claim Insurance Policy</th>
+            <th>Member Id</th>
+            <th>Claim Status</th>
+            <th>Payment Status</th>
+        </tr>
+        <tr >
+            <th>{{claim[0]}}</th>
+            <th>{{claim[1]}}</th>
+            <th>{{claim[2]}}</th>
+            <th>{{claim[3]}}</th>
+            <th>{{claim[4]}}</th>
+            <th>{{claim[5]}}</th>
+            <th>{{claim[6]}}</th>
+            <th>{{claim[7]}}</th>
+            <th>{{claim[8]}}</th>
+        </tr>
+    </table>
+    <br />
+    <br />
+<button (click)="updatePay(claim[0])"style="background-color:lightyellow;">Update</button>
+<br />
+<br />
+<button routerLink="/" style="background-color: red;">Logout</button>
+    </div>
+<br />
+<div *ngIf="flag4">
+    <h3>Claim Details</h3>
+    <table  border="1" bgcolor="orange">
+        <tr>
+            <th>Claim Id</th>
+            <th>Claim Info</th>
+            <th>Claim Type</th>
+            <th>Claim Bill Amount</th>
+            <th>Claim Insurance Plan</th>
+            <th>Claim Date</th>
+            <th>Member Id</th>
+            <th>Payment Status</th>
+            <th>Claim Status</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor = "let item of liclaims; let i=index">
+            <td>{{item.claim_Id}}</td>
+            <td>{{item.claim_Info}}</td>
+            <td>{{item.claim_Type}}</td>
+            <td>{{item.bill_Amount}}</td>
+            <td>{{item.insurance_Policy}}</td>
+            <td>{{item.claim_Date}}</td>
+            <td>{{item.member_Id}}</td>
+            <td>{{item.payment_Status}}</td>
+            <td>{{item.status}}</td>
+            <button (click)="updateStas(item.claim_Id)" style="background-color:lightyellow;">Update Payment Status</button>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <button routerLink="/" style="background-color: red;">Logout</button> 
+</div>
+<br />
+<div *ngIf="flag5">
+    <h3>Bulk Update</h3>
+<br />
+<form [formGroup]="updateForm" (ngSubmit)="submit()">
+    <p>
+     
+      <select formControlName="updateBulk">
+        <option [ngValue]="0" disabled>Select ClaimId</option>
+        <option *ngFor="let claim of liupdate" [ngValue]="claim.claim_Id">{{claim.claim_Id}}</option>
+      </select>
+     
+      <button type="submit">Submit</button>
+    </p>
+     
+    </form>
+    <br />
+    <button (click)="formfor()">Bulk Update</button>
+    <br />
+    <br />
+    <button routerLink="/" style="background-color: red;">Logout</button> 
+</div>
+<div *ngIf="flag6">
+    <h3>Payment Status for Bulk Update</h3>
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <table border="1">
+            <tr>
+                <td>Payment Status<td><input type="text" name="payment_Status" placeholder="Enter payment status" formControlName="payment_Status"></td>
+            </tr>
+        </table>
+        <button (click)="onClickSubmit(formdata.value)" style="background-color: lightyellow;">Update</button>
+        </form>
+    <br />
+    <br />
+    <button routerLink="/" style="background-color: red;">Logout</button>
+    <h3>{{msg}}</h3>
+    </div>
+  

@@ -1,0 +1,15 @@
+<h3>Status Updation</h3>
+<form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <table border="1">
+        <tr>
+            <td>Member Id<td><input type="text"  placeholder="Enter First name" formControlName="user_Id" ngModel={{member}}></td>
+        </tr>
+        <tr>
+            <td>Status</td><td><input type="text" name="status"placeholder="Enter status" formControlName="status"></td>
+        </tr>
+        <td><button (click)="onClickSubmit(formdata.value)" style="background-color: lightyellow;">Update</button></td>
+    </table>
+    </form>
+    <br />
+    <br />
+    <button routerLink="/" style="background-color: red;">Logout</button>

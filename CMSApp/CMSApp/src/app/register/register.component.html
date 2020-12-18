@@ -1,0 +1,94 @@
+
+<div align="center">
+    <h3>Registration</h3>
+<form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+   
+        <tr>
+            <td>First Name<td><input type="text" name="first_Name" placeholder="Enter First name" formControlName="first_Name"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">First Name is required</span>
+              </td>
+        </tr>
+        <tr>
+            <td>Last Name</td><td><input type="text" name="last_Name"placeholder="Enter last name" formControlName="last_Name"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Last Name is required</span>
+              </td>
+        </tr>
+        <tr>
+            <td>Age</td><td><input type="number" name="age" placeholder="Enter Age" formControlName="age"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Age is required</span>
+              </td>
+        </tr>
+        <tr>
+
+            <td>Gender</td>
+
+            <td><select path="gender" id="gender" formControlName="gender">
+                    <option value="">choose</option>
+                    <option value="Female">Female</option>
+
+                    <option value="Male">Male</option>
+
+                </select></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Gender is required</span>
+                  </td>
+
+        </tr>
+        <tr>
+            <td>Contact Number<td><input type="text" name="contact_Number" placeholder="Enter contact number" formControlName="contact_Number"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Contact Number is required</span>
+              </td>
+        </tr>
+        <tr>
+
+            <td>Role</td>
+
+            <td><select path="role" id="role" formControlName="role"
+                    style="width: 127px">
+                    <option value="">choose</option>
+                    <option value="1">ROLE_MEMBER</option>
+
+                    <option value="2">ROLE_ADMIN</option>
+
+                </select></td>
+                <td> 
+                    <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Role is required</span>
+                  </td>
+
+        </tr>
+        <tr>
+            <td>Date Of Birth</td><td><input type="date" name="date_Of_Birth"placeholder="Enter date" formControlName="date_Of_Birth"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Date Of Birth is required</span>
+              </td>
+        </tr>
+        <tr>
+            <td>User id</td><td><input type="text" name="user_Id"placeholder="Enter user id" formControlName="user_Id"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">User Id is required</span>
+              </td>
+        </tr>
+        <tr>
+            <td>password</td><td><input type="password" name="password"placeholder="Enter password" formControlName="password"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Password is required</span>
+              </td>
+        </tr>
+        <tr>
+            <td>confirm password</td><td><input type="password" name="confirm_Password"placeholder="Enter confirm password" formControlName="confirm_Password"></td>
+            <td> 
+                <span *ngIf="submitted && formdata.controls.userId.errors?.required" style="color:red">Confirm Password is required</span>
+              </td>
+        </tr>
+       
+        <td><button (click)="myClickFunction($event)">Register</button></td>
+        <td><button>Reset</button></td>   
+ 
+    <br />
+</form>
+</div>
+<P>{{msg}}</P>

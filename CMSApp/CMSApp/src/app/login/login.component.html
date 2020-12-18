@@ -1,0 +1,23 @@
+
+<div align="center">
+    <h3>Login</h3>
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+       
+            <tr>
+                <td>User Id</td><td><input type="text" name="user_Id" placeholder="userid" formControlName="user_Id"></td>
+            </tr>
+            <tr>
+                <td>Password<td><input type="password" name="password" placeholder="password" formControlName="password"></td>
+            </tr>
+            <td><button (click)="myClickFunction($event)" style="background-color:peru;">Submit</button></td>
+        <td><button  style="background-color:gray;">Reset</button></td>
+        <tr align="center">
+            <td colspan="3">NewUser?<a href="/register">signup</a></td>
+        </tr>
+     
+    </form>
+    </div>
+    <p>{{msg}}</p>
+    <br />
+
+      >
